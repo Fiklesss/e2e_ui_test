@@ -1,0 +1,44 @@
+name: Automated tests
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      ALLURE_JOB_RUN_ID:
+      ALLURE_USERNAME:
+
+env:
+  ALLURE_PROJECT_ID: 34
+  ALLURE_RESULTS: allure-results
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Chrome
+        run: sudo apt-get install google-chrome-stable
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install allurectl
+        uses: allure-framework/setup-allurectl@v1
+        with:
+          allure-endpoint: https://seniortester.testops.cloud/
+          allure-project-id: 34
+
+
