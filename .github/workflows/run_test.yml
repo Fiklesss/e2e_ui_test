@@ -19,6 +19,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Install Allure
+        run: |
+          curl -sSL https://dl.bintray.com/qameta/generic/allure/latest/allure-2.17.2.tgz -o allure.tgz
+          tar -zxvf allure.tgz
+          sudo mv allure-2.17.2 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
+
       - name: Run tests
         run: pytest --alluredir=allure-results
 
