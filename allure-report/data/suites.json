@@ -1,0 +1,68 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "tests",
+    "children" : [ {
+      "name" : "test_shopping",
+      "children" : [ {
+        "name" : "TestShopping",
+        "children" : [ {
+          "name" : "Вход в аккаунт",
+          "uid" : "a05cd0efda1ad2f2",
+          "parentUid" : "b8f27e5a79d29c9cde4726d58cdc4a89",
+          "status" : "passed",
+          "time" : {
+            "start" : 1737074223121,
+            "stop" : 1737074224891,
+            "duration" : 1770
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "newPassed" : false,
+          "newBroken" : false,
+          "retriesCount" : 0,
+          "retriesStatusChange" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "Добавление товара в корзину",
+          "uid" : "4ebef0f1fa80ca65",
+          "parentUid" : "b8f27e5a79d29c9cde4726d58cdc4a89",
+          "status" : "passed",
+          "time" : {
+            "start" : 1737074224902,
+            "stop" : 1737074225056,
+            "duration" : 154
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "newPassed" : false,
+          "newBroken" : false,
+          "retriesCount" : 0,
+          "retriesStatusChange" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "Покупка товара",
+          "uid" : "1f406b188a55ff52",
+          "parentUid" : "b8f27e5a79d29c9cde4726d58cdc4a89",
+          "status" : "passed",
+          "time" : {
+            "start" : 1737074225059,
+            "stop" : 1737074225621,
+            "duration" : 562
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "newPassed" : false,
+          "newBroken" : false,
+          "retriesCount" : 0,
+          "retriesStatusChange" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "b8f27e5a79d29c9cde4726d58cdc4a89"
+      } ],
+      "uid" : "8b820ff246ecd141db4cb09768aa907d"
+    } ],
+    "uid" : "e387fa4bb326b54ea8c19c2822aba374"
+  } ]
+}
