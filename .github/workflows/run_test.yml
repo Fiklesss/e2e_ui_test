@@ -49,7 +49,7 @@ jobs:
         id: deploy-allure-report
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          branch: gh-pages  # Обратите внимание, что ветка должна быть gh-pages
+          branch: gh-pages
           folder: allure-report
           clean: true
 
