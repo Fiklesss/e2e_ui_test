@@ -48,7 +48,7 @@ jobs:
         run: |
           git add allure-report
           git commit -m "Add Allure report"
-          git push origin main  # Пушим в основную ветку, используя GH_TOKEN
+          git push origin main  
 
       # Шаг для деплоя на GitHub Pages
       - name: Deploy to GitHub Pages
