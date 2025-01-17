@@ -1,10 +1,10 @@
-name: UI Tests
+name: Run Tests and Deploy Report
 
 on:
   workflow_dispatch:
 
 jobs:
-  ui-tests:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +28,7 @@ jobs:
           sudo ln -s /opt/allure-2.17.2/bin/allure /usr/local/bin/allure
           rm allure-2.17.2.tgz
 
-      - name: Run UI tests
+      - name: Run tests
         run: pytest --alluredir=allure-results
 
       - name: Generate Allure report
@@ -44,22 +44,16 @@ jobs:
             git push origin gh-pages
           fi
 
-      - name: Commit Allure report to gh-pages
+      - name: Deploy Allure report to gh-pages
         run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-
-          # Установка локальных параметров пользователя (в случае если глобальные не настроены)
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
-
           # Переход на ветку gh-pages
           git checkout gh-pages
 
-          # Добавляем отчет и пушим его в gh-pages
-          cp -r allure-report/* .
+          # Копируем отчет и пушим его в gh-pages
+          cp -r allure-report/* . 
+
+          # Обновляем только необходимые файлы без коммита
           git add .
-          git commit -m "Deploy Allure report"
           git push origin gh-pages
 
       - name: Publish Allure report link
