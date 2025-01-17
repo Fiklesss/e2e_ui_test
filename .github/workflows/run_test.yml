@@ -4,13 +4,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  download-history:
+  build:
     runs-on: ubuntu-latest
-    name: Download previous test history
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+          path: ./.github/gh-pages
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -29,86 +34,35 @@ jobs:
           sudo ln -s /opt/allure-2.17.2/bin/allure /usr/local/bin/allure
           rm allure-2.17.2.tgz
 
-      - name: Download previous test history
-        run: |
-          ARTIFACT_ID=$(curl -L -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" "https://api.github.com/repos/${{ github.repository }}/actions/artifacts?name=allure-results" | python -c "import sys, json; artifacts=json.load(sys.stdin)['artifacts']; print(artifacts[0]['id'] if artifacts else None);")
-          
-          if [ "$ARTIFACT_ID" != "None" ]; then
-            echo "Found previous allure-results artifact, downloading..."
-            curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip -o previous_results.zip
-            mkdir allure-results && unzip previous_results.zip -d allure-results
-          else
-            echo "No previous allure-results artifacts found, proceeding with fresh run."
-          fi
-
-  test:
-    runs-on: ubuntu-latest
-    needs: download-history
-    name: Run Tests
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
       - name: Run tests
         run: pytest --alluredir=allure-results
 
-  generate-report:
-    runs-on: ubuntu-latest
-    needs: test
-    name: Generate Allure report
-
-    steps:
-      - uses: actions/setup-java@v3
-        with:
-          distribution: 'microsoft' # See 'Supported distributions' for available options
-          java-version: '17'
-
-      - run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.23.1/allure-2.23.1.tgz && sudo tar -zxvf allure-2.23.1.tgz -C /opt/ && sudo ln -s /opt/allure-2.23.1/bin/allure /usr/bin/allure
+      - name: Copy history from gh-pages to allure-results
+        run: |
+          mkdir -p allure-results/history  # Создаем директорию для истории Allure
+          cp -R ./.github/gh-pages/history/* allure-results/history/
 
       - name: Generate Allure report
         run: allure generate allure-results -o allure-report
 
-  deploy-report:
-    runs-on: ubuntu-latest
-    needs: generate-report
-    name: Deploy Allure report
+      - name: Update Allure history
+        run: |
+          cp -R allure-report/history/* ./.github/gh-pages/history/
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup git
+      - name: Commit Allure report to gh-pages
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
 
-      - name: Commit Allure report to gh-pages
-        run: |
           # Переход на ветку gh-pages
           git checkout gh-pages
 
-          # Создаем папку с уникальным именем для каждого отчета (например, по дате)
-          REPORT_DIR="allure-report-$(date +'%Y-%m-%d_%H-%M-%S')"
-          mkdir $REPORT_DIR
-          
-          # Копируем отчет в новую папку
-          cp -r allure-report/* $REPORT_DIR/
-
-          # Добавляем и пушим изменения
+          # Добавляем отчет и пушим его в gh-pages
+          cp -r allure-report/* .
           git add .
-          git commit -m "Deploy Allure report at $REPORT_DIR"
+          git commit -m "Deploy Allure report"
           git push origin gh-pages
 
       - name: Publish Allure report link
         run: |
-          # Публикуем ссылку на последний отчет
-          echo "Allure report is available at: https://$GITHUB_ACTOR.github.io/$GITHUB_REPOSITORY/$REPORT_DIR/index.html"
+          echo "Allure report is available at: https://$GITHUB_ACTOR.github.io/$GITHUB_REPOSITORY/allure-report/index.html"
