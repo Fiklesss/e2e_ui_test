@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false  # Важно для предотвращения проблем с правами
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -46,7 +48,7 @@ jobs:
         run: |
           git add allure-report
           git commit -m "Add Allure report"
-          git push origin main
+          git push origin main  # Пушим в основную ветку, используя GH_TOKEN
 
       # Шаг для деплоя на GitHub Pages
       - name: Deploy to GitHub Pages
