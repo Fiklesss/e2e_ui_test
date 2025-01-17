@@ -60,11 +60,17 @@ jobs:
 
           # Переход на ветку gh-pages и добавление сгенерированного отчета
           git checkout gh-pages
-          git rm -rf .
-          cp -r allure-report/* .
-          git add .
-          git commit -m "Deploy Allure report"
-          git push origin gh-pages
+          
+          # Проверка на наличие файлов в папке, прежде чем удалять
+          if [ -d "allure-report" ]; then
+            git rm -rf .
+            cp -r allure-report/* .
+            git add .
+            git commit -m "Deploy Allure report"
+            git push origin gh-pages
+          else
+            echo "No allure-report to deploy"
+          fi
 
       # Публикация ссылки на отчет
       - name: Publish Allure report link
