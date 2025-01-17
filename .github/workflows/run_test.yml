@@ -37,18 +37,6 @@ jobs:
       - name: Generate Allure report
         run: allure generate allure-results --clean -o allure-report
 
-      - name: Save Allure history (if exists)
-        run: |
-          # Создание директории для истории Allure
-          mkdir -p allure-results/history
-
-          # Проверка наличия истории и её сохранение
-          if [ -d ".github/gh-pages/history" ]; then
-            cp -R ./.github/gh-pages/history/* allure-results/history/
-          else
-            echo "No previous history found"
-          fi
-
   # Джоба для деплоя отчета на GitHub Pages
   deploy-report:
     runs-on: ubuntu-latest
@@ -61,7 +49,7 @@ jobs:
         id: deploy-allure-report
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          branch: gh-pages
+          branch: gh-pages  # Обратите внимание, что ветка должна быть gh-pages
           folder: allure-report
           clean: true
 
