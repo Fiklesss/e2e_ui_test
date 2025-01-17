@@ -1,7 +1,7 @@
 name: Run Tests and Deploy Report
 
 on:
-  workflow_dispatch:  # Позволяет запускать workflow вручную через кнопку
+  workflow_dispatch:
 
 jobs:
   build:
@@ -34,13 +34,9 @@ jobs:
       - name: Generate Allure report
         run: allure generate allure-results -o allure-report
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+      # Шаг для загрузки отчета Allure как артефакт
+      - name: Upload Allure report as artifact
+        uses: actions/upload-artifact@v3
         with:
-          branch: main  # Указываем основную ветку для деплоя
-          folder: allure-report  # Указываем папку с отчетами
-          clean: true
-
-      - name: Publish Allure report link
-        run: |
-          echo "Allure report is available at: https://$GITHUB_ACTOR.github.io/$GITHUB_REPOSITORY/allure-report/index.html"
+          name: allure-report
+          path: allure-report
