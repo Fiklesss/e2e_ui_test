@@ -37,26 +37,13 @@ jobs:
       - name: Run tests
         run: pytest --alluredir=allure-results
 
-      - name: Copy history from gh-pages to allure-results
-        run: |
-          mkdir -p allure-results/history  # Создаем директорию для истории Allure
-          
-          # Создаем директорию history в gh-pages, если она не существует
-          mkdir -p ./.github/gh-pages/history
-          
-          # Проверка существования директории history на gh-pages
-          if [ -d ./.github/gh-pages/history ]; then
-            cp -R ./.github/gh-pages/history/* allure-results/history/
-          else
-            echo "No history found in gh-pages."
-          fi
-
       - name: Generate Allure report
         run: allure generate allure-results -o allure-report
 
-      - name: Update Allure history
+      - name: Copy history from gh-pages to allure-results
         run: |
-          cp -R allure-report/history/* ./.github/gh-pages/history/
+          sudo mkdir -p allure-results/history  # Создаем директорию для истории Allure
+          sudo cp -R ./.github/gh-pages/history/* allure-results/history/
 
       - name: Commit Allure report to gh-pages
         run: |
@@ -66,8 +53,10 @@ jobs:
           # Переход на ветку gh-pages
           git checkout gh-pages
 
-          # Добавляем отчет и пушим его в gh-pages
+          # Копируем новый отчет на gh-pages
           cp -r allure-report/* .
+
+          # Добавляем и пушим изменения
           git add .
           git commit -m "Deploy Allure report"
           git push origin gh-pages
