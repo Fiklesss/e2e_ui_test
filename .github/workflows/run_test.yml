@@ -41,13 +41,12 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git remote set-url origin https://github-actions:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
 
-      # Шаг для коммита и пуша отчета
+      # Шаг для коммита и пуша отчета в основную ветку
       - name: Commit Allure report to repository
         run: |
-          git checkout -b allure-report-branch
           git add allure-report
           git commit -m "Add Allure report"
-          git push origin allure-report-branch
+          git push origin main
 
       # Шаг для деплоя на GitHub Pages
       - name: Deploy to GitHub Pages
