@@ -4,8 +4,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  # Джоба для тестов и генерации отчета
+  run-tests:
     runs-on: ubuntu-latest
+    outputs:
+      allure_report_dir: ${{ steps.deploy-allure-report.outputs.allure_report_dir }}
 
     steps:
       - name: Checkout repository
@@ -34,13 +37,22 @@ jobs:
       - name: Generate Allure report
         run: allure generate allure-results --clean -o allure-report
 
-      - name: Deploy Allure report to GitHub Pages
+  # Джоба для деплоя отчета на GitHub Pages
+  deploy-report:
+    runs-on: ubuntu-latest
+    needs: run-tests
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy Allure Report to GitHub Pages
+        id: deploy-allure-report
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
           folder: allure-report
           clean: true
 
-      - name: Publish Allure report link
+      - name: Output Allure report link
         run: |
           echo "Allure report is available at: https://$GITHUB_ACTOR.github.io/$GITHUB_REPOSITORY/allure-report/index.html"
