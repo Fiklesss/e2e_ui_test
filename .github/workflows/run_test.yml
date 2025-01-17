@@ -1,7 +1,7 @@
 name: Run Tests and Deploy Report
 
 on:
-  workflow_dispatch:  # Позволяет запускать workflow вручную через кнопку
+  workflow_dispatch:
 
 jobs:
   build:
@@ -34,11 +34,16 @@ jobs:
       - name: Generate Allure report
         run: allure generate allure-results -o allure-report
 
-      # Шаг для переключения на временную ветку и добавления отчета в репозиторий
-      - name: Commit Allure report to repository
+      # Шаг для авторизации с использованием GitHub Token
+      - name: Configure Git for GitHub Actions
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
+          git remote set-url origin https://github-actions:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
+
+      # Шаг для коммита и пуша отчета
+      - name: Commit Allure report to repository
+        run: |
           git checkout -b allure-report-branch
           git add allure-report
           git commit -m "Add Allure report"
