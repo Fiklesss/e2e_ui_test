@@ -11,12 +11,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v3
-        with:
-          ref: gh-pages
-          path: ./.github/gh-pages
-
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -37,17 +31,20 @@ jobs:
       - name: Run tests
         run: pytest --alluredir=allure-results
 
-      - name: Copy history from gh-pages to allure-results
+      - name: Create history directory and copy if exists
         run: |
-          sudo mkdir -p allure-results/history  # Создаем директорию для истории Allure
-          sudo cp -R ./.github/gh-pages/history/* allure-results/history/
+          # Создаем директорию для истории Allure
+          sudo mkdir -p allure-results/history
 
-      - name: Remove old allure-report directory
-        run: |
-          sudo rm -rf allure-report  # Удаляем старый отчет
+          # Проверяем, существует ли история в gh-pages, прежде чем копировать
+          if [ -d ".github/gh-pages/history" ]; then
+            sudo cp -R ./.github/gh-pages/history/* allure-results/history/
+          else
+            echo "No previous history found"
+          fi
 
-      - name: Generate Allure report without --clean to preserve history
-        run: allure generate allure-results -o allure-report
+      - name: Generate Allure report
+        run: allure generate allure-results --clean -o allure-report
 
       - name: Commit Allure report to gh-pages
         run: |
@@ -57,10 +54,8 @@ jobs:
           # Переход на ветку gh-pages
           git checkout gh-pages
 
-          # Копируем новый отчет на gh-pages
+          # Добавляем отчет и пушим его в gh-pages
           cp -r allure-report/* .
-
-          # Добавляем и пушим изменения
           git add .
           git commit -m "Deploy Allure report"
           git push origin gh-pages
