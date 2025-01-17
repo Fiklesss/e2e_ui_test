@@ -34,32 +34,12 @@ jobs:
       - name: Generate Allure report
         run: allure generate allure-results --clean -o allure-report
 
-      - name: Ensure gh-pages branch exists
-        run: |
-          git fetch origin
-          if ! git rev-parse --verify gh-pages; then
-            git checkout --orphan gh-pages
-            git rm -rf .
-            git commit --allow-empty -m "Initial commit on gh-pages"
-            git push origin gh-pages
-          fi
-
-      - name: Configure Git user for commit
-        run: |
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
-
-      - name: Deploy Allure report to gh-pages
-        run: |
-          # Переход на ветку gh-pages
-          git checkout gh-pages
-
-          # Копируем отчет и пушим его в gh-pages
-          cp -r allure-report/* . 
-
-          # Обновляем только необходимые файлы без коммита
-          git add .
-          git push origin gh-pages
+      - name: Deploy Allure report to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          folder: allure-report
+          clean: true
 
       - name: Publish Allure report link
         run: |
