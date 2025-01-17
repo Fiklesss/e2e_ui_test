@@ -8,21 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Шаг для checkout репозитория
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Шаг для настройки Python
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
-      # Шаг для установки зависимостей
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # Шаг для установки Allure
       - name: Install Allure
         run: |
           sudo apt-get update
@@ -32,47 +28,33 @@ jobs:
           sudo ln -s /opt/allure-2.17.2/bin/allure /usr/local/bin/allure
           rm allure-2.17.2.tgz
 
-      # Шаг для выполнения тестов
       - name: Run tests
         run: pytest --alluredir=allure-results
 
-      # Шаг для генерации отчета Allure
       - name: Generate Allure report
-        run: allure generate allure-results -o allure-report --clean
+        run: allure generate allure-results -o allure-report
 
-      # Шаг для создания и деплоя на ветку gh-pages
-      - name: Create and Deploy to gh-pages branch
+      - name: Commit Allure report to gh-pages
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          
-          # Проверка, существует ли ветка gh-pages
-          git fetch origin
-          if git show-ref --verify --quiet refs/heads/gh-pages; then
-            echo "Branch gh-pages exists, no need to create it."
-          else
-            # Если ветки нет, создаем ее
-            git checkout --orphan gh-pages
-            git reset --hard
-            git commit --allow-empty -m "Initialize gh-pages branch"
-            git push origin gh-pages
-          fi
 
-          # Переход на ветку gh-pages и добавление сгенерированного отчета
+          # Переход на ветку gh-pages
           git checkout gh-pages
-          
-          # Проверка на наличие файлов в папке, прежде чем удалять
-          if [ -d "allure-report" ]; then
-            git rm -rf .
-            cp -r allure-report/* .
-            git add .
-            git commit -m "Deploy Allure report"
-            git push origin gh-pages
-          else
-            echo "No allure-report to deploy"
-          fi
 
-      # Публикация ссылки на отчет
+          # Создаем папку с уникальным именем для каждого отчета (например, по дате)
+          REPORT_DIR="allure-report-$(date +'%Y-%m-%d_%H-%M-%S')"
+          mkdir $REPORT_DIR
+          
+          # Копируем отчет в новую папку
+          cp -r allure-report/* $REPORT_DIR/
+
+          # Добавляем и пушим изменения
+          git add .
+          git commit -m "Deploy Allure report at $REPORT_DIR"
+          git push origin gh-pages
+
       - name: Publish Allure report link
         run: |
-          echo "Allure report is available at: https://$GITHUB_ACTOR.github.io/$GITHUB_REPOSITORY/allure-report/index.html"
+          # Публикуем ссылку на последний отчет
+          echo "Allure report is available at: https://$GITHUB_ACTOR.github.io/$GITHUB_REPOSITORY/$REPORT_DIR/index.html"
