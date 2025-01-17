@@ -48,15 +48,16 @@ jobs:
         run: |
           git add allure-report
           git commit -m "Add Allure report"
-          git push origin main  
+          git push origin main  # Пушим в основную ветку, используя GH_TOKEN
 
       # Шаг для деплоя на GitHub Pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          branch: main  # Используем основную ветку для деплоя
+          token: ${{ secrets.GH_TOKEN }}  # Используем GH_TOKEN для деплоя
+          branch: main  # Деплоим в основную ветку
           folder: allure-report  # Папка с отчетами Allure
-          clean: true
+          clean: true  # Очищаем перед деплоем
 
       - name: Publish Allure report link
         run: |
