@@ -37,7 +37,7 @@ jobs:
       - name: Run tests
         run: pytest --alluredir=allure-results
 
-      - name: Generate Allure report
+      - name: Generate Allure report without --clean to preserve history
         run: allure generate allure-results -o allure-report
 
       - name: Copy history from gh-pages to allure-results
