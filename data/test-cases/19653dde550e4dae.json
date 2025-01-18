@@ -1,12 +1,12 @@
 {
-  "uid" : "59ffecd175efe9e6",
+  "uid" : "19653dde550e4dae",
   "name" : "Вход в аккаунт",
   "fullName" : "tests.test_shopping.TestShopping#test_login",
   "historyId" : "d7ef11b210c2314631bbd93fdc739461",
   "time" : {
-    "start" : 1737242389735,
-    "stop" : 1737242390777,
-    "duration" : 1042
+    "start" : 1737242932901,
+    "stop" : 1737242934612,
+    "duration" : 1711
   },
   "status" : "passed",
   "flaky" : false,
@@ -18,9 +18,9 @@
   "beforeStages" : [ {
     "name" : "driver",
     "time" : {
-      "start" : 1737242384182,
-      "stop" : 1737242389734,
-      "duration" : 5552
+      "start" : 1737242924779,
+      "stop" : 1737242932900,
+      "duration" : 8121
     },
     "status" : "passed",
     "steps" : [ ],
@@ -33,8 +33,8 @@
   }, {
     "name" : "_xunit_setup_method_fixture_TestShopping",
     "time" : {
-      "start" : 1737242389734,
-      "stop" : 1737242389734,
+      "start" : 1737242932900,
+      "stop" : 1737242932900,
       "duration" : 0
     },
     "status" : "passed",
@@ -51,9 +51,9 @@
     "steps" : [ {
       "name" : "Open page",
       "time" : {
-        "start" : 1737242389735,
-        "stop" : 1737242390325,
-        "duration" : 590
+        "start" : 1737242932901,
+        "stop" : 1737242934046,
+        "duration" : 1145
       },
       "status" : "passed",
       "steps" : [ ],
@@ -66,9 +66,9 @@
     }, {
       "name" : "https://www.saucedemo.com/ is opened",
       "time" : {
-        "start" : 1737242390325,
-        "stop" : 1737242390336,
-        "duration" : 11
+        "start" : 1737242934046,
+        "stop" : 1737242934070,
+        "duration" : 24
       },
       "status" : "passed",
       "steps" : [ ],
@@ -81,9 +81,9 @@
     }, {
       "name" : "Enter login",
       "time" : {
-        "start" : 1737242390336,
-        "stop" : 1737242390535,
-        "duration" : 199
+        "start" : 1737242934070,
+        "stop" : 1737242934323,
+        "duration" : 253
       },
       "status" : "passed",
       "steps" : [ ],
@@ -99,9 +99,9 @@
     }, {
       "name" : "Enter password",
       "time" : {
-        "start" : 1737242390535,
-        "stop" : 1737242390600,
-        "duration" : 65
+        "start" : 1737242934323,
+        "stop" : 1737242934390,
+        "duration" : 67
       },
       "status" : "passed",
       "steps" : [ ],
@@ -117,9 +117,9 @@
     }, {
       "name" : "Click 'submit'",
       "time" : {
-        "start" : 1737242390601,
-        "stop" : 1737242390777,
-        "duration" : 176
+        "start" : 1737242934391,
+        "stop" : 1737242934612,
+        "duration" : 221
       },
       "status" : "passed",
       "steps" : [ ],
@@ -140,8 +140,8 @@
   "afterStages" : [ {
     "name" : "_xunit_setup_method_fixture_TestShopping::0",
     "time" : {
-      "start" : 1737242390781,
-      "stop" : 1737242390781,
+      "start" : 1737242934618,
+      "stop" : 1737242934618,
       "duration" : 0
     },
     "status" : "passed",
@@ -155,8 +155,8 @@
   }, {
     "name" : "driver::0",
     "time" : {
-      "start" : 1737242391441,
-      "stop" : 1737242391508,
+      "start" : 1737242935336,
+      "stop" : 1737242935403,
       "duration" : 67
     },
     "status" : "passed",
@@ -169,11 +169,11 @@
     "hasContent" : false
   } ],
   "labels" : [ {
-    "name" : "severity",
-    "value" : "blocker"
-  }, {
     "name" : "feature",
     "value" : "Shopping Cart and Checkout"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
   }, {
     "name" : "parentSuite",
     "value" : "tests"
@@ -185,10 +185,10 @@
     "value" : "TestShopping"
   }, {
     "name" : "host",
-    "value" : "fv-az1384-107"
+    "value" : "fv-az1781-924"
   }, {
     "name" : "thread",
-    "value" : "3223-MainThread"
+    "value" : "3239-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -212,6 +212,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "59ffecd175efe9e6.json",
+  "source" : "19653dde550e4dae.json",
   "parameterValues" : [ ]
 }
