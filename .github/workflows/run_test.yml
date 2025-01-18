@@ -43,9 +43,10 @@ jobs:
       - name: Run tests
         run: pytest --alluredir=allure-results
 
-      # Шаг для генерации отчета Allure
-      - name: Generate Allure report
-        run: allure generate allure-results --clean -o allure-report
+      # Шаг для генерации отчета Allure с использованием истории
+      - name: Generate Allure report with history
+        run: |
+          allure generate allure-results --clean -o allure-report --history-dir=allure-history
 
       # Шаг для обновления истории Allure
       - name: Save Allure history
