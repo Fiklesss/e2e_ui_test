@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Шаг для получения кода из репозитория
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -31,11 +32,11 @@ jobs:
           sudo ln -s /opt/allure-2.17.2/bin/allure /usr/local/bin/allure
           rm allure-2.17.2.tgz
 
-      # Шаг для загрузки истории из репозитория (если она существует)
-      - name: Download Allure history from repo
+      # Шаг для загрузки истории из репозитория
+      - name: Download Allure history from gh-pages
         run: |
           if [ -d allure-history ]; then
-            git clone https://github.com/${{ github.repository }} allure-history
+            git clone --branch gh-pages https://github.com/${{ github.repository }} allure-history || true
           fi
 
       # Шаг для выполнения тестов с использованием pytest
@@ -49,12 +50,17 @@ jobs:
       # Шаг для обновления истории Allure
       - name: Save Allure history
         run: |
-          mv allure-results/history allure-history/
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add allure-history/
-          git commit -m "Update Allure history"
-          git push origin main
+          # Если директория history существует в allure-results, то перемещаем ее в allure-history
+          if [ -d allure-results/history ]; then
+            mv allure-results/history allure-history/
+            git config --global user.name "GitHub Actions"
+            git config --global user.email "actions@github.com"
+            git add allure-history/
+            git commit -m "Update Allure history"
+            git push origin gh-pages
+          else
+            echo "No history found, skipping history update"
+          fi
 
       # Шаг для деплоя отчета на GitHub Pages
       - name: Deploy to GitHub Pages
