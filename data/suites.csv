@@ -1,4 +1,4 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Sat Jan 18 23:28:54 UTC 2025","Sat Jan 18 23:28:54 UTC 2025","146","tests","test_shopping","TestShopping","","","Добавление товара в корзину",""
-"passed","Sat Jan 18 23:28:52 UTC 2025","Sat Jan 18 23:28:54 UTC 2025","1711","tests","test_shopping","TestShopping","","","Вход в аккаунт",""
-"passed","Sat Jan 18 23:28:54 UTC 2025","Sat Jan 18 23:28:55 UTC 2025","566","tests","test_shopping","TestShopping","","","Покупка товара",""
+"passed","Sat Jan 18 23:31:56 UTC 2025","Sat Jan 18 23:31:57 UTC 2025","466","tests","test_shopping","TestShopping","","","Покупка товара",""
+"passed","Sat Jan 18 23:31:56 UTC 2025","Sat Jan 18 23:31:56 UTC 2025","139","tests","test_shopping","TestShopping","","","Добавление товара в корзину",""
+"passed","Sat Jan 18 23:31:55 UTC 2025","Sat Jan 18 23:31:56 UTC 2025","707","tests","test_shopping","TestShopping","","","Вход в аккаунт",""
