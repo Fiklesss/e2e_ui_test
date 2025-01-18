@@ -1,0 +1,31 @@
+[ {
+  "uid" : "a06014e86ba28340",
+  "name" : "Покупка товара",
+  "time" : {
+    "start" : 1737240579490,
+    "stop" : 1737240579990,
+    "duration" : 500
+  },
+  "status" : "passed",
+  "severity" : "blocker"
+}, {
+  "uid" : "3998e6392cf2f50",
+  "name" : "Добавление товара в корзину",
+  "time" : {
+    "start" : 1737240579348,
+    "stop" : 1737240579488,
+    "duration" : 140
+  },
+  "status" : "passed",
+  "severity" : "blocker"
+}, {
+  "uid" : "d0c27941d64971e0",
+  "name" : "Вход в аккаунт",
+  "time" : {
+    "start" : 1737240578622,
+    "stop" : 1737240579345,
+    "duration" : 723
+  },
+  "status" : "passed",
+  "severity" : "blocker"
+} ]

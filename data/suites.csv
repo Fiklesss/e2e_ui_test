@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sat Jan 18 22:49:39 UTC 2025","Sat Jan 18 22:49:39 UTC 2025","500","tests","test_shopping","TestShopping","","","Покупка товара",""
+"passed","Sat Jan 18 22:49:39 UTC 2025","Sat Jan 18 22:49:39 UTC 2025","140","tests","test_shopping","TestShopping","","","Добавление товара в корзину",""
+"passed","Sat Jan 18 22:49:38 UTC 2025","Sat Jan 18 22:49:39 UTC 2025","723","tests","test_shopping","TestShopping","","","Вход в аккаунт",""
