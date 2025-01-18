@@ -1,12 +1,12 @@
 {
-  "uid" : "ed02395c35d6a20f",
+  "uid" : "59ffecd175efe9e6",
   "name" : "Вход в аккаунт",
   "fullName" : "tests.test_shopping.TestShopping#test_login",
   "historyId" : "d7ef11b210c2314631bbd93fdc739461",
   "time" : {
-    "start" : 1737242279990,
-    "stop" : 1737242280770,
-    "duration" : 780
+    "start" : 1737242389735,
+    "stop" : 1737242390777,
+    "duration" : 1042
   },
   "status" : "passed",
   "flaky" : false,
@@ -18,9 +18,9 @@
   "beforeStages" : [ {
     "name" : "driver",
     "time" : {
-      "start" : 1737242278428,
-      "stop" : 1737242279989,
-      "duration" : 1561
+      "start" : 1737242384182,
+      "stop" : 1737242389734,
+      "duration" : 5552
     },
     "status" : "passed",
     "steps" : [ ],
@@ -33,8 +33,8 @@
   }, {
     "name" : "_xunit_setup_method_fixture_TestShopping",
     "time" : {
-      "start" : 1737242279990,
-      "stop" : 1737242279990,
+      "start" : 1737242389734,
+      "stop" : 1737242389734,
       "duration" : 0
     },
     "status" : "passed",
@@ -51,9 +51,9 @@
     "steps" : [ {
       "name" : "Open page",
       "time" : {
-        "start" : 1737242279990,
-        "stop" : 1737242280427,
-        "duration" : 437
+        "start" : 1737242389735,
+        "stop" : 1737242390325,
+        "duration" : 590
       },
       "status" : "passed",
       "steps" : [ ],
@@ -66,9 +66,9 @@
     }, {
       "name" : "https://www.saucedemo.com/ is opened",
       "time" : {
-        "start" : 1737242280427,
-        "stop" : 1737242280434,
-        "duration" : 7
+        "start" : 1737242390325,
+        "stop" : 1737242390336,
+        "duration" : 11
       },
       "status" : "passed",
       "steps" : [ ],
@@ -81,9 +81,9 @@
     }, {
       "name" : "Enter login",
       "time" : {
-        "start" : 1737242280434,
-        "stop" : 1737242280540,
-        "duration" : 106
+        "start" : 1737242390336,
+        "stop" : 1737242390535,
+        "duration" : 199
       },
       "status" : "passed",
       "steps" : [ ],
@@ -99,9 +99,9 @@
     }, {
       "name" : "Enter password",
       "time" : {
-        "start" : 1737242280540,
-        "stop" : 1737242280595,
-        "duration" : 55
+        "start" : 1737242390535,
+        "stop" : 1737242390600,
+        "duration" : 65
       },
       "status" : "passed",
       "steps" : [ ],
@@ -117,9 +117,9 @@
     }, {
       "name" : "Click 'submit'",
       "time" : {
-        "start" : 1737242280596,
-        "stop" : 1737242280770,
-        "duration" : 174
+        "start" : 1737242390601,
+        "stop" : 1737242390777,
+        "duration" : 176
       },
       "status" : "passed",
       "steps" : [ ],
@@ -140,8 +140,8 @@
   "afterStages" : [ {
     "name" : "_xunit_setup_method_fixture_TestShopping::0",
     "time" : {
-      "start" : 1737242280771,
-      "stop" : 1737242280771,
+      "start" : 1737242390781,
+      "stop" : 1737242390781,
       "duration" : 0
     },
     "status" : "passed",
@@ -155,9 +155,9 @@
   }, {
     "name" : "driver::0",
     "time" : {
-      "start" : 1737242281398,
-      "stop" : 1737242281464,
-      "duration" : 66
+      "start" : 1737242391441,
+      "stop" : 1737242391508,
+      "duration" : 67
     },
     "status" : "passed",
     "steps" : [ ],
@@ -169,11 +169,11 @@
     "hasContent" : false
   } ],
   "labels" : [ {
-    "name" : "feature",
-    "value" : "Shopping Cart and Checkout"
-  }, {
     "name" : "severity",
     "value" : "blocker"
+  }, {
+    "name" : "feature",
+    "value" : "Shopping Cart and Checkout"
   }, {
     "name" : "parentSuite",
     "value" : "tests"
@@ -185,10 +185,10 @@
     "value" : "TestShopping"
   }, {
     "name" : "host",
-    "value" : "fv-az1770-722"
+    "value" : "fv-az1384-107"
   }, {
     "name" : "thread",
-    "value" : "3217-MainThread"
+    "value" : "3223-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -212,6 +212,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "ed02395c35d6a20f.json",
+  "source" : "59ffecd175efe9e6.json",
   "parameterValues" : [ ]
 }

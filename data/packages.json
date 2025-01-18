@@ -5,13 +5,13 @@
     "name" : "tests.test_shopping",
     "children" : [ {
       "name" : "Вход в аккаунт",
-      "uid" : "ed02395c35d6a20f",
+      "uid" : "59ffecd175efe9e6",
       "parentUid" : "29ddc240f84291521f72690583c54b48",
       "status" : "passed",
       "time" : {
-        "start" : 1737242279990,
-        "stop" : 1737242280770,
-        "duration" : 780
+        "start" : 1737242389735,
+        "stop" : 1737242390777,
+        "duration" : 1042
       },
       "flaky" : false,
       "newFailed" : false,
@@ -22,13 +22,13 @@
       "parameters" : [ ]
     }, {
       "name" : "Добавление товара в корзину",
-      "uid" : "603d971c5d70fc6c",
+      "uid" : "f1c084e8ad510c9a",
       "parentUid" : "29ddc240f84291521f72690583c54b48",
       "status" : "passed",
       "time" : {
-        "start" : 1737242280773,
-        "stop" : 1737242280918,
-        "duration" : 145
+        "start" : 1737242390784,
+        "stop" : 1737242390923,
+        "duration" : 139
       },
       "flaky" : false,
       "newFailed" : false,
@@ -39,13 +39,13 @@
       "parameters" : [ ]
     }, {
       "name" : "Покупка товара",
-      "uid" : "f54a3da1feb7817a",
+      "uid" : "215f5629dc3b61b5",
       "parentUid" : "29ddc240f84291521f72690583c54b48",
       "status" : "passed",
       "time" : {
-        "start" : 1737242280920,
-        "stop" : 1737242281397,
-        "duration" : 477
+        "start" : 1737242390925,
+        "stop" : 1737242391441,
+        "duration" : 516
       },
       "flaky" : false,
       "newFailed" : false,
