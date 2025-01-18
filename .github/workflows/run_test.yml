@@ -45,13 +45,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Setup history directory for Allure
+        run: |
+          # Создаем директорию для истории Allure, если ее нет
+          sudo mkdir -p allure-results/history
+
+          # Переходим в директорию gh-pages и сохраняем предыдущие отчеты
+          if [ -d "./allure-report" ]; then
+            sudo cp -r ./allure-report/* ./allure-results/history/
+          fi
+
       - name: Deploy Allure Report to GitHub Pages
         id: deploy-allure-report
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
           folder: allure-report
-          clean: true
+          clean: false  # Убираем очистку папки, чтобы не удалять старые отчеты
 
       - name: Output Allure report link
         run: |
