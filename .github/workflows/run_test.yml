@@ -35,25 +35,19 @@ jobs:
       # Шаг для скачивания истории Allure, если она существует
       - name: Download Allure history
         run: |
-          ARTIFACT_ID=$(curl -L 
-          -H "Accept: application/vnd.github+json" 
-          -H "X-GitHub-Api-Version: 2022-11-28" 
-          -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" 
-          "https://api.github.com/repos/${{ github.repository }}/actions/artifacts?name=allure-results" 
-          | python -c "import sys, json; print(json.load(sys.stdin)['artifacts'][0]['id']);") 
-          && curl -L 
-          -H "Accept: application/vnd.github+json" 
-          -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" 
-          -H "X-GitHub-Api-Version: 2022-11-28" 
-          https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip 
-          -o previous_artifacts.zip
+          ARTIFACT_ID=$(curl -L \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/artifacts?name=allure-results" \
+            | python -c "import sys, json; print(json.load(sys.stdin)['artifacts'][0]['id']);") \
+          && curl -L \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip \
+            -o previous_artifacts.zip \
           || echo "No previous Allure results found."
-
-      # Шаг для извлечения предыдущих артефактов в директорию allure-results
-      - name: Extract previous Allure results
-        run: |
-          mkdir allure-results || true
-          unzip previous_artifacts.zip -d allure-results || echo "No previous Allure results to extract."
 
       # Шаг для выполнения тестов с использованием pytest
       - name: Run tests
@@ -62,14 +56,6 @@ jobs:
       # Шаг для генерации отчета Allure
       - name: Generate Allure report
         run: allure generate allure-results --clean -o allure-report
-
-      # Шаг для загрузки артефактов с результатами тестов (с историей)
-      - name: Upload Allure results with history
-        uses: actions/upload-artifact@v3
-        with:
-          name: allure-results
-          path: allure-results
-          retention-days: 1
 
       # Шаг для деплоя отчета на GitHub Pages
       - name: Deploy to GitHub Pages
