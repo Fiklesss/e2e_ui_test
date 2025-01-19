@@ -60,11 +60,35 @@ jobs:
         run: |
           ls -R artifact
 
+      # Шаг для проверки существования директорий перед копированием
+      - name: Check if directories exist before copying
+        run: |
+          if [ -d "artifact/history" ]; then
+            echo "History directory found"
+          else
+            echo "History directory not found"
+          fi
+          
+          if [ -d "artifact/pages" ]; then
+            echo "Pages directory found"
+          else
+            echo "Pages directory not found"
+          fi
+
       # Шаг для копирования необходимых директорий
       - name: Copy history and pages directories
         run: |
-          cp -R artifact/history allures/history
-          cp -R artifact/pages allures/pages
+          if [ -d "artifact/history" ]; then
+            cp -R artifact/history allures/history
+          else
+            echo "History directory not found, skipping copy"
+          fi
+
+          if [ -d "artifact/pages" ]; then
+            cp -R artifact/pages allures/pages
+          else
+            echo "Pages directory not found, skipping copy"
+          fi
 
       # Шаг для выполнения тестов с использованием pytest
       - name: Run tests
