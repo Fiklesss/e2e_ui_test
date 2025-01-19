@@ -35,12 +35,10 @@ jobs:
       # Шаг для получения ID артефакта
       - name: Get Artifact ID
         run: |
-          # Запросить список артефактов из GitHub API
           artifact_list=$(curl -s -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
             https://api.github.com/repos/${{ github.repository }}/actions/artifacts)
 
-          # Извлечь ID последнего артефакта (первого в списке)
           artifact_id=$(echo "$artifact_list" | jq -r '.artifacts[0].id')
           echo "Artifact ID: $artifact_id"
           echo "ARTIFACT_ID=$artifact_id" >> $GITHUB_ENV
@@ -48,7 +46,6 @@ jobs:
       # Шаг для скачивания артефакта
       - name: Download Artifact
         run: |
-          # Использовать ARTIFACT_ID для скачивания последнего артефакта из GitHub
           curl -L -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
             -o artifact.zip \
             https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
@@ -56,13 +53,16 @@ jobs:
       # Шаг для распаковки артефакта
       - name: Unzip artifact
         run: |
-          # Распаковать скачанный артефакт
           unzip artifact.zip -d artifact
 
-      # Шаг для копирования директорий history и pages
+      # Шаг для вывода содержимого распакованного артефакта
+      - name: List artifact directory contents
+        run: |
+          ls -R artifact
+
+      # Шаг для копирования необходимых директорий
       - name: Copy history and pages directories
         run: |
-          # Копировать необходимые директории (с флагом -R для копирования содержимого)
           cp -R artifact/history allures/history
           cp -R artifact/pages allures/pages
 
