@@ -38,7 +38,6 @@ jobs:
           artifact_list=$(curl -s -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
             https://api.github.com/repos/${{ github.repository }}/actions/artifacts)
-
           artifact_id=$(echo "$artifact_list" | jq -r '.artifacts[0].id')
           echo "Artifact ID: $artifact_id"
           echo "ARTIFACT_ID=$artifact_id" >> $GITHUB_ENV
@@ -55,40 +54,11 @@ jobs:
         run: |
           unzip artifact.zip -d artifact
 
-      # Шаг для вывода содержимого распакованного артефакта
-      - name: List artifact directory contents
-        run: |
-          ls -R artifact
-
-      # Шаг для проверки существования директорий перед копированием
-      - name: Check if directories exist before copying
-        run: |
-          if [ -d "artifact/history" ]; then
-            echo "History directory found"
-          else
-            echo "History directory not found"
-          fi
-          
-          if [ -d "artifact/pages" ]; then
-            echo "Pages directory found"
-          else
-            echo "Pages directory not found"
-          fi
-
-      # Шаг для копирования необходимых директорий
+      # Шаг для копирования директорий history и pages
       - name: Copy history and pages directories
         run: |
-          if [ -d "artifact/history" ]; then
-            cp -R artifact/history allures/history
-          else
-            echo "History directory not found, skipping copy"
-          fi
-
-          if [ -d "artifact/pages" ]; then
-            cp -R artifact/pages allures/pages
-          else
-            echo "Pages directory not found, skipping copy"
-          fi
+          cp -R artifact/history allures/history
+          cp -R artifact/pages allures/pages
 
       # Шаг для выполнения тестов с использованием pytest
       - name: Run tests
