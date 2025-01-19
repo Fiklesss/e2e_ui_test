@@ -32,37 +32,16 @@ jobs:
           sudo ln -s /opt/allure-2.17.2/bin/allure /usr/local/bin/allure
           rm allure-2.17.2.tgz
 
-      # Шаг для получения ID артефакта
-      - name: Get Artifact ID
-        run: |
-          artifact_list=$(curl -s -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts)
-          artifact_id=$(echo "$artifact_list" | jq -r '.artifacts[0].id')
-          echo "Artifact ID: $artifact_id"
-          echo "ARTIFACT_ID=$artifact_id" >> $GITHUB_ENV
-
-      # Шаг для скачивания артефакта
-      - name: Download Artifact
-        run: |
-          curl -L -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
-            -o artifact.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
-
-      # Шаг для распаковки артефакта
-      - name: Unzip artifact
-        run: |
-          unzip artifact.zip -d artifact
-
-      # Шаг для копирования директорий history и pages
-      - name: Copy history and pages directories
-        run: |
-          cp -R artifact/history allures/history
-          cp -R artifact/pages allures/pages
-
       # Шаг для выполнения тестов с использованием pytest
       - name: Run tests
         run: pytest --alluredir=allure-results
+
+      # Шаг для создания артефакта (например, для отчета)
+      - name: Upload Allure results as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results
 
       # Шаг для генерации отчета Allure
       - name: Generate Allure report
