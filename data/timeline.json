@@ -2,35 +2,18 @@
   "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
   "name" : "timeline",
   "children" : [ {
-    "name" : "fv-az787-330",
+    "name" : "fv-az1047-44",
     "children" : [ {
-      "name" : "3238-MainThread",
+      "name" : "3256-MainThread",
       "children" : [ {
         "name" : "Покупка товара",
-        "uid" : "ceb64446ffd97e9a",
-        "parentUid" : "8e2cf5a4b4560f6d5ba9774def803f39",
+        "uid" : "7e47bcdcc229ae6f",
+        "parentUid" : "60beb9304e0b146d91613645eb327097",
         "status" : "passed",
         "time" : {
-          "start" : 1737246566971,
-          "stop" : 1737246567537,
-          "duration" : 566
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "newPassed" : false,
-        "newBroken" : false,
-        "retriesCount" : 0,
-        "retriesStatusChange" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "Вход в аккаунт",
-        "uid" : "9767bcf7470d542e",
-        "parentUid" : "8e2cf5a4b4560f6d5ba9774def803f39",
-        "status" : "passed",
-        "time" : {
-          "start" : 1737246565238,
-          "stop" : 1737246566823,
-          "duration" : 1585
+          "start" : 1737246715384,
+          "stop" : 1737246715962,
+          "duration" : 578
         },
         "flaky" : false,
         "newFailed" : false,
@@ -41,13 +24,30 @@
         "parameters" : [ ]
       }, {
         "name" : "Добавление товара в корзину",
-        "uid" : "69aabaaed4225ee1",
-        "parentUid" : "8e2cf5a4b4560f6d5ba9774def803f39",
+        "uid" : "19da787c156b6efd",
+        "parentUid" : "60beb9304e0b146d91613645eb327097",
         "status" : "passed",
         "time" : {
-          "start" : 1737246566826,
-          "stop" : 1737246566969,
-          "duration" : 143
+          "start" : 1737246715232,
+          "stop" : 1737246715381,
+          "duration" : 149
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Вход в аккаунт",
+        "uid" : "53ec8a7430373183",
+        "parentUid" : "60beb9304e0b146d91613645eb327097",
+        "status" : "passed",
+        "time" : {
+          "start" : 1737246713069,
+          "stop" : 1737246715229,
+          "duration" : 2160
         },
         "flaky" : false,
         "newFailed" : false,
@@ -57,8 +57,8 @@
         "retriesStatusChange" : false,
         "parameters" : [ ]
       } ],
-      "uid" : "8e2cf5a4b4560f6d5ba9774def803f39"
+      "uid" : "60beb9304e0b146d91613645eb327097"
     } ],
-    "uid" : "ad032399d561680986245292642cad88"
+    "uid" : "dc17403e0e910e3d865bd3de85ec585d"
   } ]
 }
