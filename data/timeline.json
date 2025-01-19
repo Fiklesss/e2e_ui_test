@@ -2,18 +2,18 @@
   "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
   "name" : "timeline",
   "children" : [ {
-    "name" : "fv-az2023-235",
+    "name" : "fv-az787-330",
     "children" : [ {
-      "name" : "3272-MainThread",
+      "name" : "3238-MainThread",
       "children" : [ {
         "name" : "Покупка товара",
-        "uid" : "a2439238afa85c7",
-        "parentUid" : "7b0e89fbfab713f35d6d7eeda26a0954",
+        "uid" : "ceb64446ffd97e9a",
+        "parentUid" : "8e2cf5a4b4560f6d5ba9774def803f39",
         "status" : "passed",
         "time" : {
-          "start" : 1737246083679,
-          "stop" : 1737246084201,
-          "duration" : 522
+          "start" : 1737246566971,
+          "stop" : 1737246567537,
+          "duration" : 566
         },
         "flaky" : false,
         "newFailed" : false,
@@ -24,13 +24,13 @@
         "parameters" : [ ]
       }, {
         "name" : "Вход в аккаунт",
-        "uid" : "330a1cce21430078",
-        "parentUid" : "7b0e89fbfab713f35d6d7eeda26a0954",
+        "uid" : "9767bcf7470d542e",
+        "parentUid" : "8e2cf5a4b4560f6d5ba9774def803f39",
         "status" : "passed",
         "time" : {
-          "start" : 1737246082650,
-          "stop" : 1737246083519,
-          "duration" : 869
+          "start" : 1737246565238,
+          "stop" : 1737246566823,
+          "duration" : 1585
         },
         "flaky" : false,
         "newFailed" : false,
@@ -41,13 +41,13 @@
         "parameters" : [ ]
       }, {
         "name" : "Добавление товара в корзину",
-        "uid" : "d12eb84fb8e3e5c",
-        "parentUid" : "7b0e89fbfab713f35d6d7eeda26a0954",
+        "uid" : "69aabaaed4225ee1",
+        "parentUid" : "8e2cf5a4b4560f6d5ba9774def803f39",
         "status" : "passed",
         "time" : {
-          "start" : 1737246083522,
-          "stop" : 1737246083677,
-          "duration" : 155
+          "start" : 1737246566826,
+          "stop" : 1737246566969,
+          "duration" : 143
         },
         "flaky" : false,
         "newFailed" : false,
@@ -57,8 +57,8 @@
         "retriesStatusChange" : false,
         "parameters" : [ ]
       } ],
-      "uid" : "7b0e89fbfab713f35d6d7eeda26a0954"
+      "uid" : "8e2cf5a4b4560f6d5ba9774def803f39"
     } ],
-    "uid" : "672465351498b26a97d4e0eac53ff7ad"
+    "uid" : "ad032399d561680986245292642cad88"
   } ]
 }
