@@ -1,30 +1,30 @@
 [ {
-  "uid" : "c5665e8cf61bd5d9",
-  "name" : "Вход в аккаунт",
-  "time" : {
-    "start" : 1737244721511,
-    "stop" : 1737244722580,
-    "duration" : 1069
-  },
-  "status" : "passed",
-  "severity" : "blocker"
-}, {
-  "uid" : "ca9b5136348da51f",
+  "uid" : "aee25c78d3967057",
   "name" : "Покупка товара",
   "time" : {
-    "start" : 1737244722732,
-    "stop" : 1737244723243,
-    "duration" : 511
+    "start" : 1737245899959,
+    "stop" : 1737245900530,
+    "duration" : 571
   },
   "status" : "passed",
   "severity" : "blocker"
 }, {
-  "uid" : "b33085ed081929ee",
+  "uid" : "819fd15813e3ce93",
+  "name" : "Вход в аккаунт",
+  "time" : {
+    "start" : 1737245898237,
+    "stop" : 1737245899798,
+    "duration" : 1561
+  },
+  "status" : "passed",
+  "severity" : "blocker"
+}, {
+  "uid" : "b0c96e930c5a56d1",
   "name" : "Добавление товара в корзину",
   "time" : {
-    "start" : 1737244722583,
-    "stop" : 1737244722729,
-    "duration" : 146
+    "start" : 1737245899809,
+    "stop" : 1737245899956,
+    "duration" : 147
   },
   "status" : "passed",
   "severity" : "blocker"

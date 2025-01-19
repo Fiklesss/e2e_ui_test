@@ -1,12 +1,12 @@
 {
-  "uid" : "ca9b5136348da51f",
+  "uid" : "aee25c78d3967057",
   "name" : "Покупка товара",
   "fullName" : "tests.test_shopping.TestShopping#test_buy",
   "historyId" : "7a71e243c0ce3578313649be422d2c36",
   "time" : {
-    "start" : 1737244722732,
-    "stop" : 1737244723243,
-    "duration" : 511
+    "start" : 1737245899959,
+    "stop" : 1737245900530,
+    "duration" : 571
   },
   "status" : "passed",
   "flaky" : false,
@@ -18,9 +18,9 @@
   "beforeStages" : [ {
     "name" : "driver",
     "time" : {
-      "start" : 1737244720369,
-      "stop" : 1737244721510,
-      "duration" : 1141
+      "start" : 1737245892390,
+      "stop" : 1737245898236,
+      "duration" : 5846
     },
     "status" : "passed",
     "steps" : [ ],
@@ -33,9 +33,9 @@
   }, {
     "name" : "_xunit_setup_method_fixture_TestShopping",
     "time" : {
-      "start" : 1737244722731,
-      "stop" : 1737244722732,
-      "duration" : 1
+      "start" : 1737245899958,
+      "stop" : 1737245899958,
+      "duration" : 0
     },
     "status" : "passed",
     "steps" : [ ],
@@ -51,8 +51,8 @@
     "steps" : [ {
       "name" : "https://www.saucedemo.com/cart.html is opened",
       "time" : {
-        "start" : 1737244722732,
-        "stop" : 1737244722735,
+        "start" : 1737245899959,
+        "stop" : 1737245899962,
         "duration" : 3
       },
       "status" : "passed",
@@ -66,9 +66,9 @@
     }, {
       "name" : "Запомнил стоимость товара в корзине",
       "time" : {
-        "start" : 1737244722735,
-        "stop" : 1737244722751,
-        "duration" : 16
+        "start" : 1737245899962,
+        "stop" : 1737245899976,
+        "duration" : 14
       },
       "status" : "passed",
       "steps" : [ ],
@@ -81,9 +81,9 @@
     }, {
       "name" : "Click 'Checkout'",
       "time" : {
-        "start" : 1737244722751,
-        "stop" : 1737244722816,
-        "duration" : 65
+        "start" : 1737245899976,
+        "stop" : 1737245900042,
+        "duration" : 66
       },
       "status" : "passed",
       "steps" : [ ],
@@ -96,8 +96,8 @@
     }, {
       "name" : "Is opened buy_form_page",
       "time" : {
-        "start" : 1737244722816,
-        "stop" : 1737244722819,
+        "start" : 1737245900042,
+        "stop" : 1737245900045,
         "duration" : 3
       },
       "status" : "passed",
@@ -109,11 +109,11 @@
       "shouldDisplayMessage" : false,
       "hasContent" : false
     }, {
-      "name" : "Ввод в поле 'first name' - 'tester_55'",
+      "name" : "Ввод в поле 'first name' - 'tester_41'",
       "time" : {
-        "start" : 1737244722819,
-        "stop" : 1737244722897,
-        "duration" : 78
+        "start" : 1737245900045,
+        "stop" : 1737245900166,
+        "duration" : 121
       },
       "status" : "passed",
       "steps" : [ ],
@@ -126,9 +126,9 @@
     }, {
       "name" : "Ввод в поле 'last name' - 'last_name'",
       "time" : {
-        "start" : 1737244722897,
-        "stop" : 1737244722954,
-        "duration" : 57
+        "start" : 1737245900166,
+        "stop" : 1737245900226,
+        "duration" : 60
       },
       "status" : "passed",
       "steps" : [ ],
@@ -139,10 +139,10 @@
       "shouldDisplayMessage" : false,
       "hasContent" : false
     }, {
-      "name" : "Ввод в поле 'zip code' - '204'",
+      "name" : "Ввод в поле 'zip code' - '805'",
       "time" : {
-        "start" : 1737244722954,
-        "stop" : 1737244723003,
+        "start" : 1737245900226,
+        "stop" : 1737245900275,
         "duration" : 49
       },
       "status" : "passed",
@@ -156,9 +156,9 @@
     }, {
       "name" : "Click 'Continue'",
       "time" : {
-        "start" : 1737244723003,
-        "stop" : 1737244723092,
-        "duration" : 89
+        "start" : 1737245900275,
+        "stop" : 1737245900376,
+        "duration" : 101
       },
       "status" : "passed",
       "steps" : [ ],
@@ -171,8 +171,8 @@
     }, {
       "name" : "Is opened buy_finish_page",
       "time" : {
-        "start" : 1737244723092,
-        "stop" : 1737244723096,
+        "start" : 1737245900376,
+        "stop" : 1737245900380,
         "duration" : 4
       },
       "status" : "passed",
@@ -186,8 +186,8 @@
     }, {
       "name" : "Сравнение цены товара с вычетом налога и общей стоимостью",
       "time" : {
-        "start" : 1737244723096,
-        "stop" : 1737244723121,
+        "start" : 1737245900380,
+        "stop" : 1737245900405,
         "duration" : 25
       },
       "status" : "passed",
@@ -201,9 +201,9 @@
     }, {
       "name" : "Click 'Finish'",
       "time" : {
-        "start" : 1737244723121,
-        "stop" : 1737244723175,
-        "duration" : 54
+        "start" : 1737245900406,
+        "stop" : 1737245900462,
+        "duration" : 56
       },
       "status" : "passed",
       "steps" : [ ],
@@ -216,9 +216,9 @@
     }, {
       "name" : "Is opened buy_complete_page",
       "time" : {
-        "start" : 1737244723176,
-        "stop" : 1737244723179,
-        "duration" : 3
+        "start" : 1737245900462,
+        "stop" : 1737245900466,
+        "duration" : 4
       },
       "status" : "passed",
       "steps" : [ ],
@@ -231,9 +231,9 @@
     }, {
       "name" : "Проверка успешного офрмления заказа",
       "time" : {
-        "start" : 1737244723179,
-        "stop" : 1737244723192,
-        "duration" : 13
+        "start" : 1737245900466,
+        "stop" : 1737245900481,
+        "duration" : 15
       },
       "status" : "passed",
       "steps" : [ ],
@@ -245,9 +245,9 @@
       "hasContent" : false
     } ],
     "attachments" : [ {
-      "uid" : "a4e237f8f3000273",
+      "uid" : "efac292246269f71",
       "name" : "Success",
-      "source" : "a4e237f8f3000273.png",
+      "source" : "efac292246269f71.png",
       "type" : "image/png",
       "size" : 23073
     } ],
@@ -258,11 +258,11 @@
     "hasContent" : true
   },
   "afterStages" : [ {
-    "name" : "_xunit_setup_method_fixture_TestShopping::0",
+    "name" : "driver::0",
     "time" : {
-      "start" : 1737244723243,
-      "stop" : 1737244723244,
-      "duration" : 1
+      "start" : 1737245900531,
+      "stop" : 1737245900598,
+      "duration" : 67
     },
     "status" : "passed",
     "steps" : [ ],
@@ -273,11 +273,11 @@
     "shouldDisplayMessage" : false,
     "hasContent" : false
   }, {
-    "name" : "driver::0",
+    "name" : "_xunit_setup_method_fixture_TestShopping::0",
     "time" : {
-      "start" : 1737244723244,
-      "stop" : 1737244723310,
-      "duration" : 66
+      "start" : 1737245900531,
+      "stop" : 1737245900531,
+      "duration" : 0
     },
     "status" : "passed",
     "steps" : [ ],
@@ -289,11 +289,11 @@
     "hasContent" : false
   } ],
   "labels" : [ {
-    "name" : "feature",
-    "value" : "Shopping Cart and Checkout"
-  }, {
     "name" : "severity",
     "value" : "blocker"
+  }, {
+    "name" : "feature",
+    "value" : "Shopping Cart and Checkout"
   }, {
     "name" : "parentSuite",
     "value" : "tests"
@@ -305,10 +305,10 @@
     "value" : "TestShopping"
   }, {
     "name" : "host",
-    "value" : "fv-az1947-119"
+    "value" : "fv-az1712-612"
   }, {
     "name" : "thread",
-    "value" : "3251-MainThread"
+    "value" : "3299-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -332,6 +332,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "ca9b5136348da51f.json",
+  "source" : "aee25c78d3967057.json",
   "parameterValues" : [ ]
 }
